@@ -2,12 +2,12 @@ package entities;
 
 public class Cinema {
     private int numeroFileiras;
-    private int cadeirasEmCadaFileira;
+    private int cadeirasPorFileira;
     private double valorIngresso;
 
-    public Cinema(int numeroFileiras, int assentosEmCadaFileira) {
+    public Cinema(int numeroFileiras, int cadeirasPorFileira) {
         this.numeroFileiras = numeroFileiras;
-        this.cadeirasEmCadaFileira = assentosEmCadaFileira;
+        this.cadeirasPorFileira = cadeirasPorFileira;
     }
 
     public int getNumeroFileiras() {
@@ -18,12 +18,12 @@ public class Cinema {
         this.numeroFileiras = numeroFileiras;
     }
 
-    public int getCadeirasEmCadaFileira() {
-        return cadeirasEmCadaFileira;
+    public int getCadeirasPorFileira() {
+        return cadeirasPorFileira;
     }
 
-    public void setCadeirasEmCadaFileira(int assentosEmCadaFileira) {
-        this.cadeirasEmCadaFileira = assentosEmCadaFileira;
+    public void setCadeirasPorFileira(int cadeirasPorFileira) {
+        this.cadeirasPorFileira = cadeirasPorFileira;
     }
 
     public double getValorIngresso() {
@@ -34,9 +34,17 @@ public class Cinema {
         this.valorIngresso = valorIngresso;
     }
 
-    public String cadeirasCinema() {
-        if (this.cadeirasEmCadaFileira * this.numeroFileiras < 60) {
-            this.valorIngresso = (this.cadeirasEmCadaFileira * this.numeroFileiras) * 10.0;
+    public String precoIngressosDoCinema() {
+        int calculoLugares = this.cadeirasPorFileira * this.numeroFileiras;
+
+        if (calculoLugares <= 60) {
+            this.valorIngresso = calculoLugares * 10.0;
+        } else if (this.numeroFileiras > 4 ) {
+            int metadeFrente = this.numeroFileiras / 2;
+            int metadePosterior = this.numeroFileiras - metadeFrente;
+
+            this.valorIngresso = (double)(((metadeFrente * this.cadeirasPorFileira * 10) + (metadePosterior * cadeirasPorFileira * 8)));
+
         }
         return "Resultado Total: R$" + this.valorIngresso;
     }
