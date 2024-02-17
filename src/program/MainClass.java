@@ -1,34 +1,80 @@
 package program;
 
 import entities.Cinema;
-
 import java.util.Scanner;
 
 public class MainClass {
     public static void main(String[]args){
         Scanner tc = new Scanner(System.in);
 
-        int numeroFileiras, cadeirasEmCadaFileira;
-
-        System.out.println("Cinema:\n" +
-                "  1 2 3 4 5 6 7 8 9\n" +
-                "1 S S S S S S S S S\n" +
-                "2 S S S S S S S S S\n" +
-                "3 S S S S S S S S S\n" +
-                "4 S S S S S S S S S\n" +
-                "5 S S S S S S S S S\n" +
-                "6 S S S S S S S S S\n" +
-                "7 S S S S S S S S S\n" +
-                "8 S S S S S S S S S\n" +
-                "9 S S S S S S S S S\n");
         System.out.print("Numeros de Fileiras: ");
-        numeroFileiras = tc.nextInt();
+        int numeroFileiras = tc.nextInt();
         System.out.print("Numero de cadeiras por fila: ");
-        cadeirasEmCadaFileira = tc.nextInt();
+        int cadeirasEmCadaFileira = tc.nextInt();
 
         Cinema cinema = new Cinema(numeroFileiras, cadeirasEmCadaFileira);
 
-        System.out.println(cinema.precoIngressosDoCinema());
+        //Inciciando a matriz. Formando as coordenadas dos assentos:
+        char[][] matrizCadeiras = new char[numeroFileiras][cadeirasEmCadaFileira];
+
+        //Definindo "S" como assentos vazios na matriz:
+        for (int i = 0; i < matrizCadeiras.length; i++){
+            for (int j = 0; j < matrizCadeiras[i].length; j++ ){
+                matrizCadeiras[i][j] = 'S';
+            }
+        }
+
+        //Entrada de dados para definir o assento selecionado na matriz:
+        System.out.print("Número da fileira: ");
+        int numeroDaFileira = tc.nextInt();
+        System.out.print("Número da cadeira: ");
+        int numeroDaCadeira = tc.nextInt();
+
+        //loop para imprimir os assentos de acordo com o tamanho das coordenadas:
+        System.out.print("  ");
+        for (int coluna = 1; coluna <= cadeirasEmCadaFileira; coluna++){
+            System.out.print(coluna + " ");
+        }
+        System.out.println();
+
+        for (int linha = 1; linha <= numeroFileiras; linha++){
+            System.out.print(linha + " ");
+            for (int coluna = 1; coluna <= cadeirasEmCadaFileira; coluna++){
+                System.out.print("S ");
+            }
+            System.out.println();
+        }
+
+        System.out.println(cinema.PrecoIngressoCinema());
+
+        System.out.print("\nCinema:");
+
+        //Logica que define aonde o assento esta sendo selecionado e alterando de "S" para "B" na matriz:
+        if (numeroDaFileira >= 0 && numeroDaFileira < cadeirasEmCadaFileira &&
+            numeroDaCadeira >= 0 && numeroDaCadeira < numeroFileiras){
+                matrizCadeiras[numeroDaFileira - 1][numeroDaCadeira - 1] = 'B';
+        } else {
+            System.out.println("[ERRO]Assento inválido!");
+        }
+        System.out.println();
+
+        //loop para imprimir atualizado, imrpimendo o assento escolhido de acordo com as coordenadas:
+        System.out.print("  ");
+        for (int coluna = 1; coluna <= cadeirasEmCadaFileira; coluna++){
+            System.out.print(coluna + " ");
+        }
+        System.out.println();
+
+        for (int linha = 1; linha <= numeroFileiras; linha++){
+            System.out.print(linha + " ");
+            for (int coluna = 1; coluna <= cadeirasEmCadaFileira; coluna++){
+                System.out.print(matrizCadeiras[linha - 1][coluna - 1] + " ");
+            }
+            System.out.println();
+        }
+
+        //Impressão dos valor total dos assentos:
+        System.out.println(cinema.valorTotalIngressosDoCinema());
         tc.close();
     }
 }

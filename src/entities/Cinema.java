@@ -34,10 +34,21 @@ public class Cinema {
         this.valorIngresso = valorIngresso;
     }
 
-    public String precoIngressosDoCinema() {
+    public String PrecoIngressoCinema() {
+        int calculoLugares = this.cadeirasPorFileira * this.numeroFileiras;
+        if (calculoLugares <= 60) {
+            this.valorIngresso = calculoLugares * 10.0;
+        }
+        return "Ingresso: R$" + this.valorIngresso;
+    }
+
+    public String valorTotalIngressosDoCinema() {
         int calculoLugares = this.cadeirasPorFileira * this.numeroFileiras;
 
-        if (calculoLugares <= 60) {
+        if (calculoLugares <= 60){
+            return "Ingresso: R$";
+        }
+        else if (calculoLugares <= 60) {
             this.valorIngresso = calculoLugares * 10.0;
         } else if (this.numeroFileiras > 4 ) {
             int metadeFrente = this.numeroFileiras / 2;
