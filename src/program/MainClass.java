@@ -2,7 +2,6 @@ package program;
 
 import entities.BoxOffice;
 import entities.SeatCoordinates;
-
 import java.util.Scanner;
 
 public class MainClass {
@@ -43,7 +42,6 @@ public class MainClass {
 
         //loop para imprimir atualizado, imrpimendo o assento escolhido de acordo com as coordenadas:
         SeatCoordinates.imprimirAssentos();
-
 
         tc.close();
     }
