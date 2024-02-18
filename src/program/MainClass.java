@@ -45,7 +45,9 @@ public class MainClass {
             System.out.println();
         }
 
-        System.out.println(cinema.PrecoIngressoCinema());
+        System.out.println();
+
+        cinema.PrecoIngressoCinema();
 
         System.out.print("\nCinema:");
 
@@ -74,7 +76,7 @@ public class MainClass {
         }
 
         //Impressão dos valor total dos assentos:
-        System.out.println(cinema.valorTotalIngressosDoCinema());
+
         tc.close();
     }
 }
