@@ -1,11 +1,11 @@
 package entities;
 
-public class Cinema {
+public class BoxOffice {
     private int numeroFileiras;
     private int cadeirasPorFileira;
     private double valorIngresso;
 
-    public Cinema(int numeroFileiras, int cadeirasPorFileira) {
+    public BoxOffice(int numeroFileiras, int cadeirasPorFileira) {
         this.numeroFileiras = numeroFileiras;
         this.cadeirasPorFileira = cadeirasPorFileira;
     }

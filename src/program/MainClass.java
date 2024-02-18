@@ -1,6 +1,7 @@
 package program;
 
-import entities.Cinema;
+import entities.BoxOffice;
+
 import java.util.Scanner;
 
 public class MainClass {
@@ -12,7 +13,7 @@ public class MainClass {
         System.out.print("Numero de cadeiras por fila: ");
         int cadeirasEmCadaFileira = tc.nextInt();
 
-        Cinema cinema = new Cinema(numeroFileiras, cadeirasEmCadaFileira);
+        BoxOffice boxOffice = new BoxOffice(numeroFileiras, cadeirasEmCadaFileira);
 
         //Inciciando a matriz. Formando as coordenadas dos assentos:
         char[][] matrizCadeiras = new char[numeroFileiras][cadeirasEmCadaFileira];
@@ -47,7 +48,7 @@ public class MainClass {
 
         System.out.println();
 
-        cinema.PrecoIngressoCinema();
+        boxOffice.PrecoIngressoCinema();
 
         System.out.print("\nCinema:");
 
